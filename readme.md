@@ -2,7 +2,7 @@
 
 ## Result
 
-As shown in the picture below, a QR code is generated from a random string retrieved from server. User can click the "Generate a new QR code" button to re-generate the QR code with a new random string from server.
+As shown in the picture below, a QR code is generated from a random string retrieved from server. User can click the "Generate a new QR code" button to retrieve a new random string from server and generate a new QR code.
 
 ![](./result.gif)
 
@@ -14,22 +14,22 @@ The following code builds a simple web app, which can return a random string whe
 
 ```java
 @GetMapping("/randomString")
-	public String randomString(String name) {
-		String randomString = randomStringGenerator();
+public String randomString(String name) {
+  String randomString = randomStringGenerator();
 
-		return String.format(randomString, name);
-	}
+  return String.format(randomString, name);
+}
 
-	public String randomStringGenerator() {
-		String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk" + "lmnopqrstuvwxyz!@#$%&";
-		Random rnd = new Random();
+public String randomStringGenerator() {
+  String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk" + "lmnopqrstuvwxyz!@#$%&";
+  Random rnd = new Random();
 
-		int len = 10;
-		StringBuilder sb = new StringBuilder(len);
-		for (int i = 0; i < len; i++)
-			sb.append(chars.charAt(rnd.nextInt(chars.length())));
-		return sb.toString();
-	}
+  int len = 10;
+  StringBuilder sb = new StringBuilder(len);
+  for (int i = 0; i < len; i++)
+    sb.append(chars.charAt(rnd.nextInt(chars.length())));
+  return sb.toString();
+}
 ```
 
 ## Front end code
