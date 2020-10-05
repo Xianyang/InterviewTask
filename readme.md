@@ -32,9 +32,9 @@ public String randomStringGenerator() {
 }
 ```
 
-## Front end code
+## Front-end
 
-The frond end is developed using Flutter
+The frond-end is developed using Flutter
 
 **Code for building widgets**
 
