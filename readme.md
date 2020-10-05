@@ -36,65 +36,40 @@ public String randomStringGenerator() {
 
 The frond-end is developed using Flutter
 
-**Code for building widgets**
+**Code for building QR code page**
 
 ```dart
 Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.home)),
-                Tab(icon: Icon(Icons.qr_code)),
-              ],
-            ),
-            title: Text('Interview Task'),
-          ),
-          body: TabBarView(
-            children: [
-              Scaffold (
-                body: Center(
-                  child: Text('Purposely left empty')
-                )
-              ),
-              Scaffold (
-                body: Center(child: Column(children: <Widget>[  
-                  Container(  
-                    margin: EdgeInsets.all(10),  
-                    child: QrImage(
-                      data: qrContent,
-                      version: QrVersions.auto,
-                      size: 300,
-                      gapless: false,
-                    )
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Text("String in the QR code: " + qrContent),
-                  ),
-                  Container(  
-                    margin: EdgeInsets.all(10),  
-                    child: FlatButton(  
-                      color: Colors.blue,
-                      highlightColor: Colors.blue[700],
-                      colorBrightness: Brightness.dark,
-                      splashColor: Colors.grey,
-                      child: Text("Generate a new QR code"),
-                      shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                      onPressed: _generateNewQRCode,  
-                    ),  
-                  ),
-                ])) 
-              ),
-            ],
-          ),
-        ),
+  return Scaffold (
+    body: Center(child: Column(children: <Widget>[  
+      Container(  
+        margin: EdgeInsets.only(top: 100),
+        child: QrImage(
+          data: qrContent,
+          version: QrVersions.auto,
+          size: 300,
+          gapless: false,
+        )
       ),
-    );
-  }
+      Container(
+        margin: EdgeInsets.all(10),
+        child: Text("String in the QR code: " + qrContent),
+      ),
+      Container(  
+        margin: EdgeInsets.all(10),  
+        child: FlatButton(  
+          color: Colors.blue,
+          highlightColor: Colors.blue[700],
+          colorBrightness: Brightness.dark,
+          splashColor: Colors.grey,
+          child: Text("Generate a new QR code"),
+          shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          onPressed: _generateNewQRCode,  
+        ),  
+      ),
+    ])) 
+  );
+}
 ```
 
 **Code for retrieving random string from server**
