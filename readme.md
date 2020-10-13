@@ -75,21 +75,23 @@ Widget build(BuildContext context) {
 **Code for retrieving random string from server**
 
 ```dart
-_generateNewQRCode() async {
-    print('retrieving a new random string from server');
+class HttpClient {
+  Future<String> fetchRandomString() async {
+    print('fetching a new random string from server');
 
     var url = 'http://192.168.1.10:8080/randomString';
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
       print('new random string ' + response.body);
-      setState(() {
-        qrContent = response.body;
-      });
+      return response.body;
     } else {
       print('fail to retrieve random string');
+      throw Exception(
+          'Fail to fetch random string from server, please check you connection');
     }
   }
+}
 ```
 
 Kindly note that: in my testing, the server is deployed on a local machine. If you want to test the code, please replace the url with the address of your machine in the local network. 
